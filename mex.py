@@ -9,10 +9,10 @@ class MexFinder:
         # (b) For any maximal sequence of consecutive elements, the first
         #     one is mapped to last one, and vice-versa.
         #
-        # The key (-1) is mapped to 0, so when an element is added, we
+        # The key (-1) is mapped to itself, so when an element is added, we
         # don't need to give special treatment to the special case when
         # this element is 0.
-        self._d = {-1: 0}
+        self._d = {-1: -1}
 
     def add(self, n):
         """Adds a number to the collection.
@@ -36,10 +36,7 @@ class MexFinder:
 
     def mex(self):
         """Returns the minimal non-negative integer excluded from the set."""
-        if 0 not in self._d:
-            return 0
-        else:
-            return self._d[0] + 1
+        return self._d[-1] + 1
         
 
 def mex(values):
